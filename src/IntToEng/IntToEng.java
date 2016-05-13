@@ -14,13 +14,44 @@ public class IntToEng {
     // 数値を英訳する変換するメソッド
     static String translateEng(int n) {
     	String str = "";
-    	String[] hutaketaArray = {"teen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"}; 
+    	String[] hutaketaArray = {"","teen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"}; 
+    	String[] hitoketaArray = {"zero","one","two","three","four","five","six","seven","eight","nine"};
     	int hutaketame = n / 10; //0~9
-    	if (n == 1) {
-    		str = "" + hutaketaArray[0];
-    	} else {
-    		str = hutaketaArray[1] + "";
+    	int hitoketame = n % 10; //0~9
+    	
+    	
+    	if (hutaketame == 1) { 
+    		if(hitoketame == 4 ||hitoketame == 6 || hitoketame == 7|| hitoketame == 9){ //14,16,17,19
+    			str = hitoketaArray[hitoketame] + hutaketaArray[1];
+    		}else if(hitoketame == 0){ //10
+    			str = "ten";
+    		}else if(hitoketame == 1){ //11
+    			str = "eleven";
+    		}else if(hitoketame == 2){ //12
+    			str = "twelve";
+    		}else if(hitoketame == 3){ //13
+    			str = "thirteen";
+    		}else if(hitoketame == 5){ //15
+    			str = "fifteen";
+    		}else if(hitoketame == 8){ //18
+    			str = "eighteen";
+    		}
+    		
+    	} else if(hutaketame >=2 && hutaketame <= 9){ //20-99
+    		if(hitoketame == 0){ //20,30,40...
+    			str =hutaketaArray[hutaketame];
+    		}else{
+    			str = hutaketaArray[hutaketame] +" "+ hitoketaArray[hitoketame];
+    		}
+    	} else if(hutaketame == 10){ //100
+    		if(hitoketame == 0){
+    			str = "one hundred"; 
+    		}
+    	}else{ //例外
+    		str = "0~100の数字を入力してください。";
     	}
+    	
+    	return str;
     /*	
     	if (n == 0) str = Zero();
     	else if (n == 1) str = One();
@@ -50,10 +81,10 @@ public class IntToEng {
     	}
     			
     	else return str="";*/
-    		return str;
+    		
     }
     
-    static String Zero() {
+    /*static String Zero() {
     	return "zero";
     }
     static String One() {
@@ -97,5 +128,6 @@ public class IntToEng {
     static String Teen() {
     	return "teen";
     }
+    */
 
 }
