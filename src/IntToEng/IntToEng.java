@@ -14,37 +14,38 @@ public class IntToEng {
     // 数値を英訳する変換するメソッド
     static String translateEng(int n) {
     	String str = "";
-    	String[] hutaketaArray = {"","teen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"}; 
-    	String[] hitoketaArray = {"zero","one","two","three","four","five","six","seven","eight","nine"};
-    	int hutaketame = n / 10; //0~9
-    	int hitoketame = n % 10; //0~9
+    	String[] doubleArray = {"","teen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"}; 
+    	String[] singleArray = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    	int doublefigures = n / 10; //0~9
+    	int singlefigures = n % 10; //0~9
     	
-    	
-    	if (hutaketame == 1) { 
-    		if(hitoketame == 4 ||hitoketame == 6 || hitoketame == 7|| hitoketame == 9){ //14,16,17,19
-    			str = hitoketaArray[hitoketame] + hutaketaArray[1];
-    		}else if(hitoketame == 0){ //10
+    	if(doublefigures == 0) {
+    		str = singleArray[singlefigures];
+    	}else if (doublefigures == 1) { 
+    		if(singlefigures == 4 ||singlefigures == 6 || singlefigures == 7|| singlefigures == 9){ //14,16,17,19
+    			str = singleArray[singlefigures] + doubleArray[1];
+    		}else if(singlefigures == 0){ //10
     			str = "ten";
-    		}else if(hitoketame == 1){ //11
+    		}else if(singlefigures == 1){ //11
     			str = "eleven";
-    		}else if(hitoketame == 2){ //12
+    		}else if(singlefigures == 2){ //12
     			str = "twelve";
-    		}else if(hitoketame == 3){ //13
+    		}else if(singlefigures == 3){ //13
     			str = "thirteen";
-    		}else if(hitoketame == 5){ //15
+    		}else if(singlefigures == 5){ //15
     			str = "fifteen";
-    		}else if(hitoketame == 8){ //18
+    		}else if(singlefigures == 8){ //18
     			str = "eighteen";
     		}
     		
-    	} else if(hutaketame >=2 && hutaketame <= 9){ //20-99
-    		if(hitoketame == 0){ //20,30,40...
-    			str =hutaketaArray[hutaketame];
+    	} else if(doublefigures >=2 && doublefigures <= 9){ //20-99
+    		if(singlefigures == 0){ //20,30,40...
+    			str =doubleArray[doublefigures];
     		}else{
-    			str = hutaketaArray[hutaketame] +" "+ hitoketaArray[hitoketame];
+    			str = doubleArray[doublefigures] +" "+ singleArray[singlefigures];
     		}
-    	} else if(hutaketame == 10){ //100
-    		if(hitoketame == 0){
+    	} else if(doublefigures == 10){ //100
+    		if(singlefigures == 0){
     			str = "one hundred"; 
     		}
     	}else{ //例外
@@ -83,51 +84,5 @@ public class IntToEng {
     	else return str="";*/
     		
     }
-    
-    /*static String Zero() {
-    	return "zero";
-    }
-    static String One() {
-    	return "one";
-    }
-    static String Two() {
-    	return "two";
-    }
-    static String Three() {
-    	return "three";
-    }
-    static String Four() {
-    	return "four";
-    }
-    static String Five() {
-    	return "five";
-    }
-    static String Six() {
-    	return "six";
-    }
-    static String Seven() {
-    	return "seven";
-    }
-    static String Eight() {
-    	return "eight";
-    }
-    static String Nine() {
-    	return "nine";
-    }
-    static String Ten() {
-    	return "ten";
-    }
-    static String Eleven() {
-    	return "eleven";
-    }
-    static String Twelve() {
-    	return "twelve";
-    }
-    
-    
-    static String Teen() {
-    	return "teen";
-    }
-    */
 
 }
