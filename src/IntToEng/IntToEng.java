@@ -16,11 +16,13 @@ public class IntToEng {
     	String str = "";
     	String[] doubleArray = {"","teen", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"}; 
     	String[] singleArray = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    	String hundred  = "hundred";
     	int doublefigures = n / 10; //0~9
     	int singlefigures = n % 10; //0~9
+    	int triplefigures = n / 100;
     	
     	if(doublefigures == 0) {
-    		str = singleArray[singlefigures];
+    		str = doubleArray(singleArray, singlefigures);
     	}else if (doublefigures == 1) { 
     		if(singlefigures == 4 ||singlefigures == 6 || singlefigures == 7|| singlefigures == 9){ //14,16,17,19
     			str = singleArray[singlefigures] + doubleArray[1];
@@ -40,7 +42,7 @@ public class IntToEng {
     		
     	} else if(doublefigures >=2 && doublefigures <= 9){ //20-99
     		if(singlefigures == 0){ //20,30,40...
-    			str =doubleArray[doublefigures];
+    			str = doubleArray(doubleArray, doublefigures);
     		}else{
     			str = doubleArray[doublefigures] +" "+ singleArray[singlefigures];
     		}
@@ -84,5 +86,11 @@ public class IntToEng {
     	else return str="";*/
     		
     }
+    
+	private static String doubleArray(String[] doubleArray, int doublefigures) {
+		String str;
+		str =doubleArray[doublefigures];
+		return str;
+	}
 
 }
